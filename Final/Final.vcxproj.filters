@@ -57,6 +57,12 @@
     <ClInclude Include="PointManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Text2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp">
@@ -89,12 +95,24 @@
     <ClCompile Include="PointManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Text2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="fshader.glsl">
       <Filter>Shaders</Filter>
     </None>
     <None Include="vshader.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="textfshader.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="textvshader.glsl">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

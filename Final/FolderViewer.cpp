@@ -46,6 +46,7 @@ void FolderViewer::Update(){
 
 		if(targetFolder != nullptr){
 			cam->LookAt(targetFolder->position);
+			
 
 			if(Keys::I && lastchanged > .5f)
 				if(targetFolder->parent != nullptr){
@@ -65,6 +66,16 @@ void FolderViewer::Update(){
 		}
 		else
 			cam->LookAt(glm::vec3(0.0f));
+	}
+}
+
+void FolderViewer::Render(){
+	if(targetFolder != nullptr){
+		std::string path = Folder::GetPath(targetFolder);
+		std::replace(path.begin(), path.end(), '\\', '/');
+		path = "Currently Looking At: " + path;
+		printText2D(path.c_str(), 10, 500, 16);
+		printText2D(path.c_str(), 10, 520, 16);
 	}
 }
 

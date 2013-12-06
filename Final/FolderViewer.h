@@ -5,6 +5,9 @@
 #include "Keys.h"
 #include "Time.h"
 #include "Folder.h"
+#include "Text2D.h"
+#include <string>
+#include <algorithm>
 
 class FolderViewer {
 private:
@@ -22,6 +25,7 @@ public:
 	~FolderViewer();
 
 	void Update();
+	void Render();
 
 	void SetCamera(Camera* c);
 	void SetTarget(Folder* f);

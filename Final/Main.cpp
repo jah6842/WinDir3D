@@ -1,5 +1,7 @@
 #include "Main.h"
 
+#include "Text2D.h"
+
 GLFWwindow* window;
 DirectoryTree* dirTree;
 Camera cam(800,600,60.0f);
@@ -25,6 +27,8 @@ void display(){
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );     // clear the window
 
 	dirTree->Render(cam);
+
+	fViewer.Render();
 }
 
 void errorCallback(int error, const char* description){
@@ -103,12 +107,17 @@ void init(){
 	// OpenGL
 	glClearColor( 1.0, 1.0, 1.0, 1.0 ); 
 
+	// Set the camera controlled by the file viewer
 	fViewer.SetCamera(&cam);
+
+	// Initialize text rendering
+	initText2D("font.bmp");
 }
 
 // Clean up our own memory structures
 void cleanup(){
 	delete dirTree;
+	cleanupText2D();
 }
 
 int main(int argc, char* argv[]){
@@ -116,7 +125,7 @@ int main(int argc, char* argv[]){
 	// Initialize everything
 	init();
 
-	dirTree = new DirectoryTree("C:\\Program Files (x86)");
+	dirTree = new DirectoryTree("H:\\Test");
 	dirTree->BuildTree();
 
 	// Loop until the user closes the window

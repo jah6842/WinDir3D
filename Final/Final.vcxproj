@@ -81,6 +81,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Text2D.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DirectoryTree.h" />
     <ClInclude Include="File.h" />
@@ -93,9 +94,11 @@
     <ClInclude Include="PointManager.h" />
     <ClInclude Include="Polyhedron.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="texture.h" />
     <ClInclude Include="Time.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Text2D.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DirectoryTree.cpp" />
     <ClCompile Include="FolderViewer.cpp" />
@@ -105,10 +108,13 @@
     <ClCompile Include="PointManager.cpp" />
     <ClCompile Include="Polyhedron.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="texture.cpp" />
     <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="fshader.glsl" />
+    <None Include="textfshader.glsl" />
+    <None Include="textvshader.glsl" />
     <None Include="vshader.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
