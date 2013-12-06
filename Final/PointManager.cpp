@@ -23,7 +23,7 @@ void PointManager::Init(){
     glGenBuffers( 1, &myBuffer );
     
 	// Load shaders and use the resulting shader program
-	myShaderProgram = CreateShaderProgram( "vshamder.glsl", "fshader.glsl" );
+	myShaderProgram = CreateShaderProgram( "vshader.glsl", "fshader.glsl" );
 
 	// Initialize the vertex position attribute from the vertex shader
     GLuint loc = glGetAttribLocation( myShaderProgram, "vPosition" );
