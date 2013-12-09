@@ -80,8 +80,9 @@ void PointManager::GenerateGeometry(){
 
 	totalPoints = pointCount;
 
+	glBindVertexArray( vao );
 	glBindBuffer( GL_ARRAY_BUFFER, myBuffer );
-	glBufferData( GL_ARRAY_BUFFER, sizeof(glm::vec3) * totalPoints * 36, points, GL_STATIC_DRAW );
+	glBufferData( GL_ARRAY_BUFFER, sizeof(glm::vec3) * points->length() * 36, points, GL_STATIC_DRAW );
 }
 
 void PointManager::AddPoint(File* a){

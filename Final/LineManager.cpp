@@ -46,6 +46,7 @@ void LineManager::GenerateGeometry(){
 
 	totalLines = count / 2;
 
+	glBindVertexArray( vao );
 	glBindBuffer( GL_ARRAY_BUFFER, myBuffer );
 	glBufferData( GL_ARRAY_BUFFER, sizeof(glm::vec3) * totalLines * 2, points, GL_STATIC_DRAW );
 }
