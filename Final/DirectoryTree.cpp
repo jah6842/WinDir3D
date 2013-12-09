@@ -265,6 +265,10 @@ void DirectoryTree::BuildGeometry(){
 }
 
 void DirectoryTree::Render(Camera& cam){
+	// Tree isn't built, don't bother rendering.
+	if(!Done())
+		return;
+
 	glUseProgram( shaderProgram );
 	glBindVertexArray( vao );
 	glBindBuffer( GL_ARRAY_BUFFER, pointsBuffer );
@@ -299,8 +303,8 @@ void DirectoryTree::Render(Camera& cam){
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	glDrawArrays(GL_TRIANGLES, 0, totalFolders * 36);
 
-	pointMan.Render(cam);
 	lineMan.Render(cam);
+	pointMan.Render(cam);
 }
 
 void DirectoryTree::DestroyTree(Folder* root){

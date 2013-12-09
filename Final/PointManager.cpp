@@ -1,7 +1,7 @@
 #include "PointManager.h"
 
 PointManager::PointManager(){
-	color = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
+	color = glm::vec4(0.0f, 0.0f, 1.0f, 1.0f);
 	totalPoints = 0;
 	pointCount = 0;
 	pointSize = .5f;
@@ -39,7 +39,7 @@ void PointManager::GenerateGeometry(){
 	points = new glm::vec3[files.size() * 36];
 
 	for(int i = 0; i < files.size(); i++){
-		float radiusOfCube = .2f;
+		float radiusOfCube = .5f;
 		points[pointCount++] =( files[i]->position + glm::vec3(-radiusOfCube,-radiusOfCube,-radiusOfCube));
 		points[pointCount++] =( files[i]->position + glm::vec3(-radiusOfCube,-radiusOfCube, radiusOfCube));
 		points[pointCount++] =( files[i]->position + glm::vec3(-radiusOfCube, radiusOfCube, radiusOfCube));
@@ -118,8 +118,8 @@ void PointManager::Render(Camera& cam){
 	GLint colorPos = glGetUniformLocation(myShaderProgram, "inColor");
 
 	//Draw
-	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	//glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glProgramUniform4fv(myShaderProgram, colorPos, 1, glm::value_ptr(color) );
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	glDrawArrays(GL_TRIANGLES, 0, totalPoints);
+	glDrawArrays(GL_TRIANGLES, 0, pointCount);
 }
