@@ -125,7 +125,7 @@ int main(int argc, char* argv[]){
 	// Initialize everything
 	init();
 
-	dirTree = new DirectoryTree("H:\\New Folder");
+	dirTree = new DirectoryTree("C:\\Windows");
 	dirTree->BuildTree();
 
 	// Loop until the user closes the window

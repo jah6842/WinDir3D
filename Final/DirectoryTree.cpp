@@ -192,7 +192,7 @@ void DirectoryTree::BuildGeometry(){
 				GLfloat phi = _c * inc;
 
 				glm::vec4 temp = glm::vec4(cos(phi) * r, y, sin(phi) * r, 1.0f) ;
-				itr2->second->position = pos + glm::vec3(temp) * TEST_ANGLE;
+				itr2->second->position = pos + (glm::vec3(temp) * 200.0f);// * TEST_ANGLE;
 				pointMan.AddPoint(itr2->second);
 				_c++;
 			}

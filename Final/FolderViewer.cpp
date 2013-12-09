@@ -29,16 +29,16 @@ void FolderViewer::Update(){
 	if (Keys::W)
 		cam->Move(0,0,speed * Time::DeltaTime());
 
+	if(Keys::SPACE)
+			cam->Move(0,-speed * Time::DeltaTime(), 0);
+	if(Keys::SHIFT)
+		cam->Move(0,speed * Time::DeltaTime(), 0);
+
 	if(freeLook){
 		if (Keys::LEFT)
 			cam->Rotate(0,-80 * Time::DeltaTime(),0);
 		if (Keys::RIGHT)
 			cam->Rotate(0,80 * Time::DeltaTime(),0);
-
-		if(Keys::SPACE)
-			cam->Move(0,-speed * Time::DeltaTime(), 0);
-		if(Keys::SHIFT)
-			cam->Move(0,speed * Time::DeltaTime(), 0);
 
 		if(Keys::Z)
 			cam->LookAt(glm::vec3(0.0f, 0.0f, 0.0f));
