@@ -6,7 +6,7 @@ Camera::Camera(int w, int h, float fov){
 	_height = h;
 	_nearClipDist = .1f;
 	_farClipDist = 10000000.0f;
-	_position = glm::vec3(0.0f,0.0f,-2);
+	_position = glm::vec3(0.0f,0.0f,-200.0f);
 	//_rotation = glm::quat(glm::vec3(0.0f,0.0f,0.0f));
 	RecalcProjMatrix();
 }

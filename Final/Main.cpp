@@ -45,6 +45,7 @@ void windowResize(GLFWwindow* window, int width, int height){
 	// recalc VP
 	glViewport(0, 0, width, height);
 	cam.Resize(width, height);
+	setWindowSizeText2D(window);
 	update();
 	display();
 	glfwSwapBuffers(window);
@@ -81,7 +82,7 @@ void init(){
 	glfwWindowHint(GLFW_SAMPLES, 8);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	window = glfwCreateWindow(800,600,"first",NULL,NULL);
+	window = glfwCreateWindow(1366,768,"first",NULL,NULL);
 	if (!window){
         glfwTerminate();
         exit(EXIT_FAILURE);
@@ -112,6 +113,7 @@ void init(){
 
 	// Initialize text rendering
 	initText2D("font.bmp");
+	setWindowSizeText2D(window);
 }
 
 // Clean up our own memory structures
@@ -122,13 +124,15 @@ void cleanup(){
 
 int main(int argc, char* argv[]){
 
+	// Get a folder to view
+	std::cout << "Enter a folder to view (ex: \"C:\", \"C:\\Windows\"): ";
+	std::string desiredFolder;
+	std::getline(std::cin, desiredFolder);
+
 	// Initialize everything
 	init();
 
-
-	std::cout << "Enter a folder to view (ex: \"C:\\\\Windows\": ";
-	std::string desiredFolder;
-	dirTree = new DirectoryTree("H:\\New Folder");
+	dirTree = new DirectoryTree(desiredFolder);
 	dirTree->BuildTree();
 
 	// Loop until the user closes the window

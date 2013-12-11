@@ -21,6 +21,8 @@ unsigned int Text2DVertexBufferID;
 unsigned int Text2DUVBufferID;
 unsigned int Text2DShaderID;
 unsigned int Text2DUniformID;
+unsigned int Text2dWindowSizeID;
+int width, height;
 
 void initText2D(const char * texturePath){
 
@@ -38,7 +40,14 @@ void initText2D(const char * texturePath){
 	Text2DUniformID = glGetUniformLocation( Text2DShaderID, "myTextureSampler" );
 }
 
-void printText2D(const char * text, int x, int y, int size){
+void setWindowSizeText2D(GLFWwindow* window){
+	glfwGetWindowSize(window, &width, &height);
+}
+
+void printText2D(const char * text, int _x, int _y, int size){
+
+	int x = _x;
+	int y = _y;
 
 	unsigned int length = strlen(text);
 
@@ -89,6 +98,11 @@ void printText2D(const char * text, int x, int y, int size){
 	glBindTexture(GL_TEXTURE_2D, Text2DTextureID);
 	// Set our "myTextureSampler" sampler to user Texture Unit 0
 	glUniform1i(Text2DUniformID, 0);
+
+	// Set the windowSize
+	
+	GLint windowLoc = glGetUniformLocation(Text2DShaderID, "windowSize");
+	glUniform2f(windowLoc, width, height);
 
 	// 1rst attribute buffer : vertices
 	glEnableVertexAttribArray(0);

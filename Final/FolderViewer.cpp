@@ -16,7 +16,7 @@ void FolderViewer::Update(){
 	
 	lastchanged = glfwGetTime() - lastTime;
 
-	if(Keys::F && lastchanged > .5f){
+	if(Keys::F && lastchanged > 1.0f){
 		freeLook = !freeLook;
 	}
 
@@ -65,12 +65,26 @@ void FolderViewer::Update(){
 				}
 			}
 
-			if(Keys::J && lastchanged > .25f){
-
+			if(Keys::L && lastchanged > .25f){
+				Folder* temp = targetFolder->GetNextFolder(curFolder);
+				if(temp != nullptr){
+					targetFolder = temp;
+					curFolder++;
+					lastchanged = 0.0f;
+					lastTime = glfwGetTime();
+				}
 			}
 
-			if(Keys::L && lastchanged > .25f){
-
+			if(Keys::J && lastchanged > .25f){
+				Folder* temp = targetFolder->GetPreviousFolder(curFolder);
+				if(temp != nullptr){
+					targetFolder = temp;
+					curFolder--;
+					if(curFolder < 0)
+						curFolder = 0;
+					lastchanged = 0.0f;
+					lastTime = glfwGetTime();
+				}
 			}
 		}
 		else
@@ -83,8 +97,10 @@ void FolderViewer::Render(){
 		std::string path = Folder::GetPath(targetFolder);
 		std::replace(path.begin(), path.end(), '\\', '/');
 		path = "Currently Looking At: " + path;
-		printText2D(path.c_str(), 10, 500, 16);
-		printText2D(path.c_str(), 10, 520, 16);
+		printText2D("Press ESC to exit at any time (do not close console window manually).", 0, 32, 16);
+		printText2D("Use F to lock onto the targeted folder and IJKL to move through the folder tree.", 0, 32, 16);
+		printText2D("Use WASD/Shift/Space to move around. Hold Z to lock onto the root folder.", 0, 16, 16);
+		printText2D(path.c_str(), 0, 0, 16);
 	}
 }
 
