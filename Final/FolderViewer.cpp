@@ -4,6 +4,7 @@ FolderViewer::FolderViewer(){
 	cam = nullptr;
 	targetFolder = nullptr;
 	freeLook = true;
+	int curFolder = 0;
 }
 
 FolderViewer::~FolderViewer(){
@@ -12,11 +13,10 @@ FolderViewer::~FolderViewer(){
 
 void FolderViewer::Update(){
 	float speed = 10000.0f;
-
 	
 	lastchanged = glfwGetTime() - lastTime;
 
-	if(Keys::F){
+	if(Keys::F && lastchanged > .5f){
 		freeLook = !freeLook;
 	}
 
@@ -47,21 +47,30 @@ void FolderViewer::Update(){
 		if(targetFolder != nullptr){
 			cam->LookAt(targetFolder->position);
 			
-
-			if(Keys::I && lastchanged > .5f)
+			if(Keys::I && lastchanged > .25f)
 				if(targetFolder->parent != nullptr){
 					targetFolder = targetFolder->parent;
 					PrintLookingAt();
 					lastchanged = 0.0f;
 					lastTime = glfwGetTime();
+					curFolder = 0;
 				}
-			if(Keys::K && lastchanged > .5f){
+			if(Keys::K && lastchanged > .25f){
 				if(targetFolder->subfolders.size() > 0){
 					targetFolder = targetFolder->subfolders.begin()->second;
 					PrintLookingAt();
 					lastchanged = 0.0f;
 					lastTime = glfwGetTime();
+					curFolder = 0;
 				}
+			}
+
+			if(Keys::J && lastchanged > .25f){
+
+			}
+
+			if(Keys::L && lastchanged > .25f){
+
 			}
 		}
 		else

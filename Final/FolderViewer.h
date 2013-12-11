@@ -13,6 +13,7 @@ class FolderViewer {
 private:
 	bool freeLook;
 	Folder* targetFolder;
+	int curFolder;
 	Camera* cam;
 
 	double lastchanged;

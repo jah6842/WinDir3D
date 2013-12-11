@@ -125,6 +125,9 @@ int main(int argc, char* argv[]){
 	// Initialize everything
 	init();
 
+
+	std::cout << "Enter a folder to view (ex: \"C:\\\\Windows\": ";
+	std::string desiredFolder;
 	dirTree = new DirectoryTree("H:\\New Folder");
 	dirTree->BuildTree();
 
